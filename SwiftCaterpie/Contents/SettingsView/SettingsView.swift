@@ -34,6 +34,7 @@ struct SettingsView: View {
                         Image(systemName: docksExpand ?  "chevron.down" : "chevron.right")
                     }.padding(.leading, 8)
                         .buttonStyle(IconButton())
+                        .focusable(false)
                     Text("Docks")
                     Spacer()
                 }
@@ -51,6 +52,7 @@ struct SettingsView: View {
                         Image(systemName: docksExpand ?  "chevron.down" : "chevron.right")
                     }.padding(.leading, 8)
                         .buttonStyle(IconButton())
+                        .focusable(false)
                     Text("Appereance")
                     Spacer()
                 }

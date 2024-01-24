@@ -86,6 +86,13 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
+		D56798D52B61A79300955842 /* readmeImages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = readmeImages;
+			sourceTree = "<group>";
+		};
 		D5EB290D2B6174CC0085653F = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +112,7 @@
 		D5EB29182B6174CC0085653F /* SwiftCaterpie */ = {
 			isa = PBXGroup;
 			children = (
+				D56798D52B61A79300955842 /* readmeImages */,
 				D56798CB2B617ADC00955842 /* Styles */,
 				D56798C62B61759200955842 /* Contents */,
 				D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */,

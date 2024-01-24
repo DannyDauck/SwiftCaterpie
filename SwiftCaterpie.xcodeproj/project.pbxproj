@@ -12,8 +12,6 @@
 		D56798CF2B617EA900955842 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798CE2B617EA900955842 /* MainScreen.swift */; };
 		D56798D12B617F3700955842 /* MainScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798D02B617F3700955842 /* MainScreenModel.swift */; };
 		D56798D42B61875C00955842 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798D32B61875C00955842 /* SettingsView.swift */; };
-		D56798D72B61A88600955842 /* 24-01-project-structure.png in Resources */ = {isa = PBXBuildFile; fileRef = D56798D62B61A88600955842 /* 24-01-project-structure.png */; };
-		D56798D92B61A89C00955842 /* 24-01-header.png in Resources */ = {isa = PBXBuildFile; fileRef = D56798D82B61A89C00955842 /* 24-01-header.png */; };
 		D5EB291A2B6174CC0085653F /* SwiftCaterpieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */; };
 		D5EB291C2B6174CC0085653F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EB291B2B6174CC0085653F /* ContentView.swift */; };
 		D5EB291E2B6174CD0085653F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5EB291D2B6174CD0085653F /* Assets.xcassets */; };
@@ -26,8 +24,6 @@
 		D56798CE2B617EA900955842 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		D56798D02B617F3700955842 /* MainScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModel.swift; sourceTree = "<group>"; };
 		D56798D32B61875C00955842 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		D56798D62B61A88600955842 /* 24-01-project-structure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "24-01-project-structure.png"; sourceTree = "<group>"; };
-		D56798D82B61A89C00955842 /* 24-01-header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "24-01-header.png"; sourceTree = "<group>"; };
 		D5EB29162B6174CC0085653F /* SwiftCaterpie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCaterpie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCaterpieApp.swift; sourceTree = "<group>"; };
 		D5EB291B2B6174CC0085653F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,15 +86,6 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
-		D56798D52B61A79300955842 /* readmeImages */ = {
-			isa = PBXGroup;
-			children = (
-				D56798D82B61A89C00955842 /* 24-01-header.png */,
-				D56798D62B61A88600955842 /* 24-01-project-structure.png */,
-			);
-			path = readmeImages;
-			sourceTree = "<group>";
-		};
 		D5EB290D2B6174CC0085653F = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +105,6 @@
 		D5EB29182B6174CC0085653F /* SwiftCaterpie */ = {
 			isa = PBXGroup;
 			children = (
-				D56798D52B61A79300955842 /* readmeImages */,
 				D56798CB2B617ADC00955842 /* Styles */,
 				D56798C62B61759200955842 /* Contents */,
 				D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */,
@@ -197,8 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5EB29212B6174CD0085653F /* Preview Assets.xcassets in Resources */,
-				D56798D92B61A89C00955842 /* 24-01-header.png in Resources */,
-				D56798D72B61A88600955842 /* 24-01-project-structure.png in Resources */,
 				D5EB291E2B6174CD0085653F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

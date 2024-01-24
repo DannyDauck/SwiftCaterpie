@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D56798CA2B6175DC00955842 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798C92B6175DC00955842 /* Header.swift */; };
+		D56798CD2B617AFA00955842 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798CC2B617AFA00955842 /* IconButton.swift */; };
+		D56798CF2B617EA900955842 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798CE2B617EA900955842 /* MainScreen.swift */; };
+		D56798D12B617F3700955842 /* MainScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798D02B617F3700955842 /* MainScreenModel.swift */; };
+		D56798D42B61875C00955842 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798D32B61875C00955842 /* SettingsView.swift */; };
 		D5EB291A2B6174CC0085653F /* SwiftCaterpieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */; };
 		D5EB291C2B6174CC0085653F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EB291B2B6174CC0085653F /* ContentView.swift */; };
 		D5EB291E2B6174CD0085653F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5EB291D2B6174CD0085653F /* Assets.xcassets */; };
@@ -14,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D56798C92B6175DC00955842 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		D56798CC2B617AFA00955842 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		D56798CE2B617EA900955842 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		D56798D02B617F3700955842 /* MainScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenModel.swift; sourceTree = "<group>"; };
+		D56798D32B61875C00955842 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D5EB29162B6174CC0085653F /* SwiftCaterpie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCaterpie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCaterpieApp.swift; sourceTree = "<group>"; };
 		D5EB291B2B6174CC0085653F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +43,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D56798C62B61759200955842 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				D56798D22B61854400955842 /* SettingsView */,
+				D56798C82B6175CA00955842 /* Header */,
+				D56798C72B6175A900955842 /* MainScreen */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		D56798C72B6175A900955842 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D56798CE2B617EA900955842 /* MainScreen.swift */,
+				D56798D02B617F3700955842 /* MainScreenModel.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		D56798C82B6175CA00955842 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				D56798C92B6175DC00955842 /* Header.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		D56798CB2B617ADC00955842 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				D56798CC2B617AFA00955842 /* IconButton.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		D56798D22B61854400955842 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				D56798D32B61875C00955842 /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		D5EB290D2B6174CC0085653F = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +105,8 @@
 		D5EB29182B6174CC0085653F /* SwiftCaterpie */ = {
 			isa = PBXGroup;
 			children = (
+				D56798CB2B617ADC00955842 /* Styles */,
+				D56798C62B61759200955842 /* Contents */,
 				D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */,
 				D5EB291B2B6174CC0085653F /* ContentView.swift */,
 				D5EB291D2B6174CD0085653F /* Assets.xcassets */,
@@ -139,8 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56798D42B61875C00955842 /* SettingsView.swift in Sources */,
 				D5EB291C2B6174CC0085653F /* ContentView.swift in Sources */,
+				D56798CD2B617AFA00955842 /* IconButton.swift in Sources */,
+				D56798D12B617F3700955842 /* MainScreenModel.swift in Sources */,
+				D56798CF2B617EA900955842 /* MainScreen.swift in Sources */,
 				D5EB291A2B6174CC0085653F /* SwiftCaterpieApp.swift in Sources */,
+				D56798CA2B6175DC00955842 /* Header.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

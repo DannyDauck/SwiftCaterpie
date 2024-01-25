@@ -12,5 +12,6 @@ import Foundation
 class MainScreenModel: ObservableObject{
     
     @Published var settingsIsVisible: Bool = false
-    
+    @Published var fileExplorerIsVisible = true
+    @Published var selectedFile: URL = URL(fileURLWithPath: "empty")
 }

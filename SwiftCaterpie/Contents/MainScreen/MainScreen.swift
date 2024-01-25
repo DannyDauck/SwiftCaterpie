@@ -11,20 +11,36 @@ struct MainScreen: View {
     
     @StateObject var vm = MainScreenModel()
     
+    
     var body: some View {
-        HStack{
-            //Section for FileExplorer
+        
+        //Section for main working area
+        VStack(spacing: 0){
             
-            //Section for main working area
-            VStack{
-                Header(settingsIsVisible:{
-                    vm.settingsIsVisible.toggle()
-                })
+            Header(settingsIsVisible:{
+                vm.settingsIsVisible.toggle()
+            })
+            ZStack{
+                HStack{
+                    FileExplorer(isPresent: $vm.settingsIsVisible, selectedFile: $vm.selectedFile)
+                    Spacer()
+                }
+                if vm.settingsIsVisible{ HStack{
+                    Spacer()
+                    VStack{
+                        SettingsView()
+                        Spacer()
+                    }
+                }
+                }
             }
-            
-        }
+        }.background(Image(.excampleBg)
+            .resizable().scaledToFill())
+        .presentationCornerRadius(15)
     }
 }
+
+
 
 #Preview {
     MainScreen()

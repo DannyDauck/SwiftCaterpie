@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct MainScreen: View {
+struct MainScreenView: View {
     
-    @StateObject var vm = MainScreenModel()
+    @StateObject var vm = MainScreenViewModel()
     
     
     var body: some View {
@@ -17,13 +17,13 @@ struct MainScreen: View {
         //Section for main working area
         VStack(spacing: 0){
             
-            Header(settingsIsVisible:{
-                vm.settingsIsVisible.toggle()
-            })
+            Header(vm: vm)
             ZStack{
-                HStack{
-                    FileExplorer(isPresent: $vm.settingsIsVisible, selectedFile: $vm.selectedFile)
-                    Spacer()
+                HStack(spacing:0){
+                    if vm.fileExplorerIsVisible{
+                        FileExplorer(isPresent: $vm.fileExplorerIsVisible, selectedFile: $vm.selectedFile)
+                    }
+                    WorkingArea(mainScreenViewModel: vm)
                 }
                 if vm.settingsIsVisible{ HStack{
                     Spacer()
@@ -43,5 +43,5 @@ struct MainScreen: View {
 
 
 #Preview {
-    MainScreen()
+    MainScreenView()
 }

@@ -9,10 +9,27 @@ import SwiftUI
 
 struct Header: View {
     
-    let settingsIsVisible: ()->()
+    @ObservedObject var vm: MainScreenViewModel
+
     
     var body: some View {
         HStack{
+            if !vm.fileExplorerIsVisible {Button(action: {
+                vm.fileExplorerIsVisible.toggle()
+            }, label: {
+                ZStack{
+                    Image(systemName: "square.leftthird.inset.filled")
+                        .font(.largeTitle)
+                        .foregroundStyle(LinearGradient(colors: [.highlightOne, .highlightTwo], startPoint: .bottomLeading, endPoint: .topTrailing))
+                        .padding([.top,.leading],4)
+                    Image(systemName: "square.leftthird.inset.filled")
+                        .font(.largeTitle)
+                        .foregroundStyle(.white)
+                }
+            }).buttonStyle(IconButton())
+                    .padding(.trailing)
+            }
+            
             ZStack{
                 Text("Swift Caterpie")
                     .font(.largeTitle)
@@ -37,7 +54,7 @@ struct Header: View {
             }
             Spacer()
             Button(action: {
-                settingsIsVisible()
+                vm.settingsIsVisible.toggle()
             }, label: {
                 ZStack{
                     Image(systemName: "gearshape")
@@ -57,5 +74,5 @@ struct Header: View {
 }
 
 #Preview {
-    Header(settingsIsVisible: {})
+    Header(vm: MainScreenViewModel())
 }

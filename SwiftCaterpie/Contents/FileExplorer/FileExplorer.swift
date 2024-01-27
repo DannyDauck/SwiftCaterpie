@@ -16,20 +16,15 @@ struct FileExplorer: View {
     
     var body: some View {
         ZStack{
-            Rectangle().fill(.transparentHalf).blur(radius: /*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+            //Background
+            Rectangle().fill(.transparentHalf)
+            
             VStack(spacing: 0){
                 
                 //Header
                 HStack{
-                    Text("File Explorer")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .foregroundStyle(.gray)
-                        .padding(.leading, 5)
-                        .frame(width: 200)
-                    
-                    Spacer()
                     Button(action: {
-                        
+                        isPresent.toggle()
                     }){
                         Image(systemName: "xmark.circle")
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -39,6 +34,16 @@ struct FileExplorer: View {
                         .background(LinearGradient(colors: [.backgroundMedium, .highlightOne], startPoint: .bottomLeading, endPoint: .topTrailing))
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                         .focusable(false)
+                        .padding(.leading,10)
+                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                    Text("File Explorer")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.gray)
+                        .padding(.leading, 5)
+                        .frame(width: 200)
+                    
+                    Spacer()
+                   
                 }.padding([.leading, .trailing], 5)
                     .padding([.bottom, .top], 0)
                     .background(.backgroundMedium.opacity(0.8))

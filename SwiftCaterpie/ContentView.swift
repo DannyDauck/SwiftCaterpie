@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            MainScreen()
+            MainScreenView()
         }
         .padding(0)
     }

@@ -16,6 +16,10 @@ Swift Caterpie is a Swift development tool in progress. Once completed, it aims 
     <img src="SwiftCaterpie/readmeImages/24-01-header.png" alt=""/>
     <img src="SwiftCaterpie/readmeImages/24-01-project-structure.png" alt=""/>
     </div>
+  </p>
+    I have incorporated a file explorer that recognizes Swift, JSON, PNG, and JPEG files and highlights them accordingly. Here comes the first feature: you can drag and drop multiple projects into the file explorer. This allows you to orient yourself with other projects and compare code sections without having to switch windows. I have also started implementing a Settings Area and filled it with placeholders
+    </p>
+    <img src="SwiftCaterpie/Assets.xcassets/readmeImages/24-01-all-components.imageset/24-01-all-components.png" alt=""/>
   </details>
 </details>
 

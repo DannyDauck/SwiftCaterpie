@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		D50DABAC2B65127C00E140B9 /* WorkingArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABAB2B65127C00E140B9 /* WorkingArea.swift */; };
 		D50DABAF2B651A0900E140B9 /* FileRegisterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABAE2B651A0900E140B9 /* FileRegisterItem.swift */; };
+		D50DABB22B659ED900E140B9 /* CodeAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB12B659ED900E140B9 /* CodeAnalyzerView.swift */; };
+		D50DABB52B65A3F300E140B9 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB42B65A3F300E140B9 /* ColorManager.swift */; };
+		D50DABB82B65A5F700E140B9 /* SnippetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB72B65A5F700E140B9 /* SnippetType.swift */; };
+		D50DABBA2B65A9E200E140B9 /* CodeAnalyzerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB92B65A9E200E140B9 /* CodeAnalyzerViewModel.swift */; };
+		D50DABBD2B65AAA700E140B9 /* CodeSnippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABBC2B65AAA700E140B9 /* CodeSnippet.swift */; };
+		D50DABBF2B65B06100E140B9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABBE2B65B06100E140B9 /* SettingsViewModel.swift */; };
 		D56798CA2B6175DC00955842 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798C92B6175DC00955842 /* Header.swift */; };
 		D56798CD2B617AFA00955842 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798CC2B617AFA00955842 /* IconButton.swift */; };
 		D56798CF2B617EA900955842 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798CE2B617EA900955842 /* MainScreenView.swift */; };
@@ -27,6 +33,12 @@
 /* Begin PBXFileReference section */
 		D50DABAB2B65127C00E140B9 /* WorkingArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingArea.swift; sourceTree = "<group>"; };
 		D50DABAE2B651A0900E140B9 /* FileRegisterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRegisterItem.swift; sourceTree = "<group>"; };
+		D50DABB12B659ED900E140B9 /* CodeAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAnalyzerView.swift; sourceTree = "<group>"; };
+		D50DABB42B65A3F300E140B9 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		D50DABB72B65A5F700E140B9 /* SnippetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetType.swift; sourceTree = "<group>"; };
+		D50DABB92B65A9E200E140B9 /* CodeAnalyzerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAnalyzerViewModel.swift; sourceTree = "<group>"; };
+		D50DABBC2B65AAA700E140B9 /* CodeSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSnippet.swift; sourceTree = "<group>"; };
+		D50DABBE2B65B06100E140B9 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D56798C92B6175DC00955842 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		D56798CC2B617AFA00955842 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		D56798CE2B617EA900955842 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -72,9 +84,44 @@
 			path = IItemViews;
 			sourceTree = "<group>";
 		};
+		D50DABB02B659E8000E140B9 /* CodeAnalyzer */ = {
+			isa = PBXGroup;
+			children = (
+				D50DABBB2B65AA8600E140B9 /* IItem */,
+				D50DABB12B659ED900E140B9 /* CodeAnalyzerView.swift */,
+				D50DABB92B65A9E200E140B9 /* CodeAnalyzerViewModel.swift */,
+			);
+			path = CodeAnalyzer;
+			sourceTree = "<group>";
+		};
+		D50DABB32B65A3C800E140B9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D50DABB42B65A3F300E140B9 /* ColorManager.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D50DABB62B65A45F00E140B9 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				D50DABB72B65A5F700E140B9 /* SnippetType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		D50DABBB2B65AA8600E140B9 /* IItem */ = {
+			isa = PBXGroup;
+			children = (
+				D50DABBC2B65AAA700E140B9 /* CodeSnippet.swift */,
+			);
+			path = IItem;
+			sourceTree = "<group>";
+		};
 		D56798C62B61759200955842 /* Contents */ = {
 			isa = PBXGroup;
 			children = (
+				D50DABB02B659E8000E140B9 /* CodeAnalyzer */,
 				D50DABAA2B65125A00E140B9 /* WorkingArea */,
 				D56798DA2B61BA5C00955842 /* FileExplorer */,
 				D56798D22B61854400955842 /* SettingsView */,
@@ -113,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				D56798D32B61875C00955842 /* SettingsView.swift */,
+				D50DABBE2B65B06100E140B9 /* SettingsViewModel.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -155,6 +203,8 @@
 		D5EB29182B6174CC0085653F /* SwiftCaterpie */ = {
 			isa = PBXGroup;
 			children = (
+				D50DABB62B65A45F00E140B9 /* Enums */,
+				D50DABB32B65A3C800E140B9 /* Tools */,
 				D56798CB2B617ADC00955842 /* Styles */,
 				D56798C62B61759200955842 /* Contents */,
 				D5EB29192B6174CC0085653F /* SwiftCaterpieApp.swift */,
@@ -245,16 +295,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D56798D42B61875C00955842 /* SettingsView.swift in Sources */,
+				D50DABB82B65A5F700E140B9 /* SnippetType.swift in Sources */,
 				D5EB291C2B6174CC0085653F /* ContentView.swift in Sources */,
 				D56798CD2B617AFA00955842 /* IconButton.swift in Sources */,
 				D56798DF2B61C1A400955842 /* FolderItem.swift in Sources */,
+				D50DABBF2B65B06100E140B9 /* SettingsViewModel.swift in Sources */,
 				D56798E12B61C1CF00955842 /* FileItem.swift in Sources */,
 				D56798D12B617F3700955842 /* MainScreenViewModel.swift in Sources */,
+				D50DABB52B65A3F300E140B9 /* ColorManager.swift in Sources */,
 				D56798CF2B617EA900955842 /* MainScreenView.swift in Sources */,
 				D56798E32B61DF3600955842 /* DroppedItem.swift in Sources */,
 				D5EB291A2B6174CC0085653F /* SwiftCaterpieApp.swift in Sources */,
+				D50DABBA2B65A9E200E140B9 /* CodeAnalyzerViewModel.swift in Sources */,
+				D50DABBD2B65AAA700E140B9 /* CodeSnippet.swift in Sources */,
 				D56798DC2B61BA7800955842 /* FileExplorer.swift in Sources */,
 				D50DABAF2B651A0900E140B9 /* FileRegisterItem.swift in Sources */,
+				D50DABB22B659ED900E140B9 /* CodeAnalyzerView.swift in Sources */,
 				D50DABAC2B65127C00E140B9 /* WorkingArea.swift in Sources */,
 				D56798CA2B6175DC00955842 /* Header.swift in Sources */,
 			);

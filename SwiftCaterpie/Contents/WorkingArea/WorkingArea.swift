@@ -35,11 +35,16 @@ struct WorkingArea: View {
                 }.frame(height: 420)
                     .padding()
                     .background(.transparentFull)
+                CodeAnalyzerView(vm: CodeAnalyzerViewModel(sourceCode: sourceCode))
+                    .frame(height: 420)
+                    .padding()
+                
                 Spacer()
             }.background(LinearGradient(colors: [.gray, .backgroundLight,.backgroundMedium], startPoint: .bottomLeading, endPoint: .topTrailing))
                 .onChange(of: mainScreenViewModel.selectedFile){
                     sourceCode = mainScreenViewModel.loadSelectedFile()
                 }
+            
             VStack(spacing: 0){
                 if !mainScreenViewModel.lastFileContainer.isEmpty{
                     HStack{

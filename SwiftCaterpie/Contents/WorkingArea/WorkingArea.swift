@@ -11,26 +11,52 @@ struct WorkingArea: View {
     @ObservedObject var mainScreenViewModel: MainScreenViewModel
     @State var sourceCode: String = ""
     @State var showRegister = false
+    @State private var triggerUpdate = false
+    
     var body: some View {
         ZStack{
             VStack{
                 ScrollView{
-                    TextEditor(text: $sourceCode)
-                        .padding()
-                        .background(.white)
-                        .frame(minHeight: 400)
-                        .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
-                        .overlay(RoundedRectangle(cornerRadius: 3).stroke(LinearGradient(colors: [.backgroundMedium, .backgroundLight, .gray], startPoint: .bottomLeading, endPoint: .topTrailing), lineWidth:2))
-                        .padding()
-                        .onChange(of: sourceCode){
-                            if sourceCode != mainScreenViewModel.loadSelectedFile()
-                                && !mainScreenViewModel.lastFileContainer.contains(where: {$0.url == mainScreenViewModel.selectedFile})
-                                && !mainScreenViewModel.selectedFile.absoluteString.isEmpty{
-                                mainScreenViewModel.lastFileContainer.append(FileRegisterItem(url: mainScreenViewModel.selectedFile, code: sourceCode, vm: mainScreenViewModel))
-                                showRegister = true
+                    HStack{
+                        GeometryReader { geometry in
+                            VStack(spacing: 0) {
+                                ForEach(0..<max(30, sourceCode.components(separatedBy: "\n").count), id: \.self) { lineNumber in
+                                    if lineNumber < sourceCode.components(separatedBy: "\n").count {
+                                        Text("\(lineNumber + 1)")
+                                            .frame(width: 30, height: geometry.size.height / CGFloat(max(30, sourceCode.components(separatedBy: "\n").count)))
+                                            .foregroundColor(.black)
+                                    } else {
+                                        //Inserts a empty Text if sourceCode has less than 30 rows
+                                        Text("")
+                                            .frame(width: 30, height: geometry.size.height / CGFloat(max(30, sourceCode.components(separatedBy: "\n").count)))
+                                    }
+                                }
+                                Spacer()
                             }
-                            
-                        }
+                        }.padding(.vertical)
+                            .background(.white)
+                            .frame(maxWidth: 30)
+                            .padding(.vertical)
+                        TextEditor(text: $sourceCode)
+                            .padding()
+                            .background(.white)
+                            .frame(minHeight: 400)
+                            .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                            .overlay(RoundedRectangle(cornerRadius: 3).stroke(LinearGradient(colors: [.backgroundMedium, .backgroundLight, .gray], startPoint: .bottomLeading, endPoint: .topTrailing), lineWidth:2))
+                            .padding([.vertical, .trailing])
+                            .onChange(of: sourceCode){
+                                
+                                sourceCode = sourceCode.replacingOccurrences(of: "„", with: "\"")
+                                sourceCode = sourceCode.replacingOccurrences(of: "“", with: "\"")
+                                if sourceCode != mainScreenViewModel.loadSelectedFile()
+                                    && !mainScreenViewModel.lastFileContainer.contains(where: {$0.url == mainScreenViewModel.selectedFile})
+                                    && !mainScreenViewModel.selectedFile.absoluteString.isEmpty{
+                                    mainScreenViewModel.lastFileContainer.append(FileRegisterItem(url: mainScreenViewModel.selectedFile, code: sourceCode, vm: mainScreenViewModel))
+                                    showRegister = true
+                                }
+                                triggerUpdate.toggle()
+                            }
+                    }
                     
                 }.frame(height: 420)
                     .padding()

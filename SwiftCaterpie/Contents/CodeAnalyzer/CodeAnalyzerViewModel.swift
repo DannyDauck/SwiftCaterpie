@@ -12,33 +12,36 @@ class CodeAnalyzerViewModel: ObservableObject{
     
     init(sourceCode: String) {
         self.sourceCode = sourceCode
-        self.settingsVM = SettingsViewModel.shared
+        
         analyzeCode()
     }
     @Published var sourceCode: String
     //Contains all code snippets, where each array inside is a line
     @Published var analyzedCode: [[CodeSnippet]] = []
-    @ObservedObject var settingsVM: SettingsViewModel
+    @ObservedObject var settingsVM =  SettingsViewModel()
     
     func analyzeCode(){
         breakeCodeIntoLines()
         checkForCommentsAndStrings()
-        
+        //checkForScopeStart()
+        //checkForScopeEnds()
         addLineNumbers()
     }
     
     private func breakeCodeIntoLines(){
         var emptyLineCounter = 0
         let codeLines = sourceCode.components(separatedBy: "\n")
-
+        print(codeLines)
         for line in codeLines{
-            if line.isEmpty && settingsVM.removeUnusedEmptyBreakeLines{
+            if line.replacingOccurrences(of: " ", with: "").isEmpty && settingsVM.removeUnusedEmptyBreakeLines{
                 emptyLineCounter += 1
             }else{
                 emptyLineCounter = 0
             }
+            print(emptyLineCounter)
+            print(line)
             if emptyLineCounter <= settingsVM.maxEmptyBreakLines{
-                analyzedCode.append([CodeSnippet(string: line.trimmingCharacters(in: .whitespacesAndNewlines), type: .undefined)])
+                analyzedCode.append([CodeSnippet(string: line.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "quotationIn", with: "\""), type: .undefined)])
             }
         }
     }
@@ -46,23 +49,29 @@ class CodeAnalyzerViewModel: ObservableObject{
     private func checkForCommentsAndStrings(){
         var workingArray: [[CodeSnippet]] = []
         for line in analyzedCode{
-            var newLine = seperateStrings(line)
+            let newLine = seperateStrings(line)
+            var lineToAdd: [CodeSnippet] = []
             for codeSnippet in newLine{
                 if codeSnippet.type != .string{
                     if codeSnippet.string.contains("//"){
                         if codeSnippet.string.hasPrefix("//"){
-                            workingArray.append([codeSnippet.cloneSnippetWithNewType(.comment)])
+                            lineToAdd.append(codeSnippet.cloneSnippetWithNewType(.comment))
                         }else{
-                            let newSnippets = codeSnippet.string.components(separatedBy: "//")
-                            workingArray.append([CodeSnippet(string: "//" + newSnippets.last!, type: .comment)])
-                            workingArray.append([CodeSnippet(string: newSnippets.first!, type: .undefined)])
+                            let components = codeSnippet.string.components(separatedBy: "//")
+                            if !components.first!.isEmpty{
+                                lineToAdd.append(CodeSnippet(string: components.first!, type: .undefined))
+                                workingArray.append([CodeSnippet(string: "//" + components.last!, type: .comment)])
+                            }
                         }
                     }else{
-                        //After seperating single comment lines, first seperate all Strings, then split by comment block ends, and finally split by comment block ends
-                        workingArray.append(seperateLineByCodeBlockEnd(seperateLineByCodeBlockStart(seperateStrings(line))))
+                        lineToAdd.append(codeSnippet)
                     }
+                    
+                }else{
+                    lineToAdd.append(codeSnippet)
                 }
             }
+            workingArray.append(seperateLineByCodeBlockEnd(seperateLineByCodeBlockStart(lineToAdd)))
         }
         analyzedCode = markCommentBlocks(workingArray)
     }
@@ -71,13 +80,17 @@ class CodeAnalyzerViewModel: ObservableObject{
         var isString = false
         let escapeIdent: String = UUID().uuidString
         for snippetIn in line{
-            //replacing qutations inbetween a string with a random string element escapeIdent
-            var snippet = snippetIn.replaceString(snippetIn.string.replacingOccurrences(of: "\\" + "\"" + "\"", with: escapeIdent + "\""))
-            if snippet.type != .comment{
+            if snippetIn.type != .comment{
+                //replacing quotations inbetween a string with a random string element escapeIdent
+                let snippet = snippetIn.replaceString(snippetIn.string.replacingOccurrences(of: "\\" + "\"" + "\"", with: escapeIdent + "\""))
+                
                 if snippet.string.hasPrefix("\""){
                     isString = true
                 }
-                let newStrings = snippet.string.components(separatedBy: "\"")
+                var newStrings = snippet.string.components(separatedBy: "\"")
+                if isString{
+                    newStrings.removeFirst()
+                }
                 
                 for string in newStrings {
                     //replace ecapeIdent again with the escape sequence for for a quotation
@@ -89,6 +102,8 @@ class CodeAnalyzerViewModel: ObservableObject{
                         isString.toggle()
                     }
                 }
+            }else{
+                newLine.append(snippetIn)
             }
         }
         
@@ -103,22 +118,25 @@ class CodeAnalyzerViewModel: ObservableObject{
         var newLine: [CodeSnippet] = []
         if !line.isEmpty{
             for snippet in line{
-                if snippet.string.contains("/*") && snippet.type != .string && snippet.type != . debuggingInfo{
+                if snippet.string.contains("/*") && snippet.type != .string && snippet.type != .debuggingInfo{
                     if snippet.string.hasPrefix("/*"){
                         let newStrings = snippet.string.components(separatedBy: "/*")
                         if newStrings.isEmpty{
-                              newLine.append(CodeSnippet(string: "/* added in Line 103 ", type: .undefined))
+                            newLine.append(CodeSnippet(string: "/*", type: .undefined))
                         }
                         for string in newStrings{
-                            newLine.append(CodeSnippet(string: "DebuggingInfo: " + string, type: .debuggingInfo))
-                            newLine.append(CodeSnippet(string: "/* added in Line 106 " + string , type: .undefined))
+                            if !string.isEmpty{
+                                newLine.append(CodeSnippet(string: "/*" + string , type: .undefined))
+                            }
                         }
                     }else{
                         var newStrings = snippet.string.components(separatedBy: "/*")
                         newLine.append(CodeSnippet(string: newStrings.first!, type: .undefined))
                         newStrings.removeFirst()
                         for string in newStrings{
-                            newLine.append(CodeSnippet(string: "/* added in line 113" + string , type: .undefined))
+                            if !string.isEmpty{
+                                newLine.append(CodeSnippet(string: "/*" + string , type: .undefined))
+                            }
                         }
                     }
                 }else{
@@ -141,22 +159,20 @@ class CodeAnalyzerViewModel: ObservableObject{
                         newStrings.removeLast()
                         if !newStrings.isEmpty{
                             for string in newStrings {
-                                newLine.append(CodeSnippet(string: string + "*/" , type: .undefined))
+                                if !string.isEmpty{
+                                    newLine.append(CodeSnippet(string: string + "*/" , type: .undefined))
+                                }
                             }
-                        }
-                        if snippet.string.components(separatedBy: "*/").count > 0{
-                            newLine.append(CodeSnippet(string: snippet.string.hasSuffix("*/") ? snippet.string.components(separatedBy: "*/").last! + "*/" : snippet.string.components(separatedBy: "*/").last! , type: .undefined))
                         }
                     }else{
                         var newStrings = snippet.string.components(separatedBy: "*/")
                         newStrings.removeLast()
                         if !newStrings.isEmpty{
                             for string in newStrings {
-                                newLine.append(CodeSnippet(string: string + "*/" , type: .undefined))
+                                if !string.isEmpty{
+                                    newLine.append(CodeSnippet(string: string + "*/" , type: .undefined))
+                                }
                             }
-                        }
-                        if snippet.string.components(separatedBy: "*/").count > 0{
-                            newLine.append(CodeSnippet(string: snippet.string.hasSuffix("*/") ? snippet.string.components(separatedBy: "*/").last! + "*/" : snippet.string.components(separatedBy: "*/").last! , type: .undefined))
                         }
                     }
                 }else{
@@ -215,6 +231,80 @@ class CodeAnalyzerViewModel: ObservableObject{
                 newLine.append(snippet)
             }
             workingArray.append(newLine)
+        }
+        analyzedCode = workingArray
+    }
+    private func checkForScopeStart(){
+        var workingArray: [[CodeSnippet]] = []
+        let alreadyChecked: [SnippetType] = [.comment, .string]
+        for line in analyzedCode{
+            var newLine: [CodeSnippet] = []
+            for snippet in line{
+                if alreadyChecked.contains(snippet.type){
+                    newLine.append(snippet)
+                }else if snippet.string.contains("{"){
+                    if snippet.string.hasPrefix("{"){
+                        newLine.append(CodeSnippet(string: "{", type: .scopeBeginnings))
+                    }
+                    var newSnippets = snippet.string.components(separatedBy: "{")
+                    for newCodeSnippet in newSnippets{
+                        if !newCodeSnippet.isEmpty{
+                            if newCodeSnippet == newSnippets.last && !snippet.string.hasSuffix("{"){
+                                newLine.append(CodeSnippet(string: newCodeSnippet, type: .undefined))
+                                workingArray.append(newLine)
+                            }else{
+                                newLine.append(CodeSnippet(string: newCodeSnippet + "{", type: .scopeBeginnings))
+                                workingArray.append(newLine)
+                                newLine = []
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        analyzedCode = workingArray
+    }
+    
+    private func checkForScopeEnds(){
+        var workingArray: [[CodeSnippet]] = []
+        let alreadyChecked: [SnippetType] = [.comment, .string]
+        for line in analyzedCode{
+            var newLine: [CodeSnippet] = []
+            for snippet in line{
+                if alreadyChecked.contains(snippet.type){
+                    newLine.append(snippet)
+                }else{
+                    if !snippet.string.isEmpty{
+                        if snippet.string.replacingOccurrences(of: "}", with: "").isEmpty{
+                            newLine.append(snippet.cloneSnippetWithNewType(.scopeEndings))
+                            workingArray.append(newLine)
+                            newLine = []
+                        }
+                    }
+                    var newSnippets = snippet.string.components(separatedBy: "}")
+                    for newCodeSnippet in newSnippets{
+                        if newCodeSnippet == newSnippets.first{
+                            if snippet.string.hasPrefix("}"){
+                                workingArray.append(newLine)
+                                newLine = []
+                                newLine.append(CodeSnippet(string: "}" + newCodeSnippet, type: .scopeEndings))
+                            }else {
+                                newLine.append(CodeSnippet(string: newCodeSnippet, type: .undefined))
+                            }
+                        }else{
+                            workingArray.append(newLine)
+                            newLine = []
+                            newLine.append(CodeSnippet(string: "}" + newCodeSnippet, type: .scopeEndings))
+                        }
+                        
+                    }
+                    if newSnippets.last!.hasSuffix("}"){
+                        workingArray.append(newLine)
+                        newLine = []
+                        newLine.append(CodeSnippet(string: "}", type: .scopeEndings))
+                    }
+                }
+            }
         }
         analyzedCode = workingArray
     }

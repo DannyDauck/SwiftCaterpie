@@ -15,7 +15,7 @@ struct ColorManager{
     @State private var brightness = 0
     @State private var colorIndex = 0
     var color: Color{
-        return colorMatrix[5%(brightness+5)][7%(colorIndex+7)]
+        return colorMatrix[(brightness+6)%5][(colorIndex+8)%7]
     }
     var importColor = Color.yellow
     var commentColor = Color.white

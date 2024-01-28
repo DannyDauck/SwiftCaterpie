@@ -71,6 +71,7 @@ class CodeAnalyzerViewModel: ObservableObject{
         var isString = false
         let escapeIdent: String = UUID().uuidString
         for snippetIn in line{
+            //replacing qutations inbetween a string with a random string element escapeIdent
             var snippet = snippetIn.replaceString(snippetIn.string.replacingOccurrences(of: "\\" + "\"" + "\"", with: escapeIdent + "\""))
             if snippet.type != .comment{
                 if snippet.string.hasPrefix("\""){
@@ -79,6 +80,7 @@ class CodeAnalyzerViewModel: ObservableObject{
                 let newStrings = snippet.string.components(separatedBy: "\"")
                 
                 for string in newStrings {
+                    //replace ecapeIdent again with the escape sequence for for a quotation
                     if isString{
                         newLine.append(CodeSnippet(string: "\"" + string.replacingOccurrences(of: escapeIdent, with: "\\" + "\"") + "\"", type: .string))
                         isString.toggle()

@@ -11,5 +11,5 @@ import Foundation
 
 enum SnippetType: CaseIterable{
     //TODO remove debbuging Info later
-    case debuggingInfo, undefined, scopeBeginnings, scopeEndings, comment, importType, varDeclaration, atDeclaration, hashDeclaration, warning, string, lineNumber
+    case debuggingInfo, undefined, scopeStart, scopeEnd, comment, importType, varDeclaration, atDeclaration, hashDeclaration, warning, string, lineNumber, indentation
 }

@@ -10,13 +10,13 @@ import Foundation
 
 struct CodeSnippet: Identifiable, Hashable{
     var string: String
-    var type: SnippetType
+    var typ: SnippetType
     var id = UUID()
     
     func cloneSnippetWithNewType(_ newType: SnippetType)->CodeSnippet{
-        return CodeSnippet(string: self.string, type: newType, id: self.id)
+        return CodeSnippet(string: self.string, typ: newType, id: self.id)
     }
     func replaceString(_ new: String)->CodeSnippet{
-        return CodeSnippet(string: new , type: self.type, id: self.id)
+        return CodeSnippet(string: new , typ: self.typ, id: self.id)
     }
 }

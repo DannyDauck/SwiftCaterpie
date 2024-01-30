@@ -40,7 +40,7 @@ struct WorkingArea: View {
                         TextEditor(text: $sourceCode)
                             .padding()
                             .background(.white)
-                            .frame(minHeight: 400)
+                            .frame(minHeight: 300)
                             .cornerRadius(/*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
                             .overlay(RoundedRectangle(cornerRadius: 3).stroke(LinearGradient(colors: [.backgroundMedium, .backgroundLight, .gray], startPoint: .bottomLeading, endPoint: .topTrailing), lineWidth:2))
                             .padding([.vertical, .trailing])
@@ -58,7 +58,7 @@ struct WorkingArea: View {
                             }
                     }
                     
-                }.frame(height: 420)
+                }.frame(height: 320)
                     .padding()
                     .background(.transparentFull)
                 CodeAnalyzerView(vm: CodeAnalyzerViewModel(sourceCode: sourceCode))

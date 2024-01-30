@@ -10,11 +10,12 @@
 		D50DABAC2B65127C00E140B9 /* WorkingArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABAB2B65127C00E140B9 /* WorkingArea.swift */; };
 		D50DABAF2B651A0900E140B9 /* FileRegisterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABAE2B651A0900E140B9 /* FileRegisterItem.swift */; };
 		D50DABB22B659ED900E140B9 /* CodeAnalyzerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB12B659ED900E140B9 /* CodeAnalyzerView.swift */; };
-		D50DABB52B65A3F300E140B9 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB42B65A3F300E140B9 /* ColorManager.swift */; };
 		D50DABB82B65A5F700E140B9 /* SnippetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB72B65A5F700E140B9 /* SnippetType.swift */; };
 		D50DABBA2B65A9E200E140B9 /* CodeAnalyzerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABB92B65A9E200E140B9 /* CodeAnalyzerViewModel.swift */; };
 		D50DABBD2B65AAA700E140B9 /* CodeSnippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABBC2B65AAA700E140B9 /* CodeSnippet.swift */; };
 		D50DABBF2B65B06100E140B9 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50DABBE2B65B06100E140B9 /* SettingsViewModel.swift */; };
+		D555B9F42B681FA7009314A8 /* CodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D555B9F32B681FA7009314A8 /* CodeItem.swift */; };
+		D555B9FB2B68A8E4009314A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D555B9FA2B68A8E4009314A8 /* Extensions.swift */; };
 		D56798CA2B6175DC00955842 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798C92B6175DC00955842 /* Header.swift */; };
 		D56798CD2B617AFA00955842 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798CC2B617AFA00955842 /* IconButton.swift */; };
 		D56798CF2B617EA900955842 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56798CE2B617EA900955842 /* MainScreenView.swift */; };
@@ -34,11 +35,12 @@
 		D50DABAB2B65127C00E140B9 /* WorkingArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingArea.swift; sourceTree = "<group>"; };
 		D50DABAE2B651A0900E140B9 /* FileRegisterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRegisterItem.swift; sourceTree = "<group>"; };
 		D50DABB12B659ED900E140B9 /* CodeAnalyzerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAnalyzerView.swift; sourceTree = "<group>"; };
-		D50DABB42B65A3F300E140B9 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		D50DABB72B65A5F700E140B9 /* SnippetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetType.swift; sourceTree = "<group>"; };
 		D50DABB92B65A9E200E140B9 /* CodeAnalyzerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeAnalyzerViewModel.swift; sourceTree = "<group>"; };
 		D50DABBC2B65AAA700E140B9 /* CodeSnippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSnippet.swift; sourceTree = "<group>"; };
 		D50DABBE2B65B06100E140B9 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		D555B9F32B681FA7009314A8 /* CodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeItem.swift; sourceTree = "<group>"; };
+		D555B9FA2B68A8E4009314A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D56798C92B6175DC00955842 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		D56798CC2B617AFA00955842 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		D56798CE2B617EA900955842 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -87,7 +89,7 @@
 		D50DABB02B659E8000E140B9 /* CodeAnalyzer */ = {
 			isa = PBXGroup;
 			children = (
-				D50DABBB2B65AA8600E140B9 /* IItem */,
+				D50DABBB2B65AA8600E140B9 /* Item */,
 				D50DABB12B659ED900E140B9 /* CodeAnalyzerView.swift */,
 				D50DABB92B65A9E200E140B9 /* CodeAnalyzerViewModel.swift */,
 			);
@@ -97,7 +99,6 @@
 		D50DABB32B65A3C800E140B9 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				D50DABB42B65A3F300E140B9 /* ColorManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -110,12 +111,21 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		D50DABBB2B65AA8600E140B9 /* IItem */ = {
+		D50DABBB2B65AA8600E140B9 /* Item */ = {
 			isa = PBXGroup;
 			children = (
 				D50DABBC2B65AAA700E140B9 /* CodeSnippet.swift */,
+				D555B9F32B681FA7009314A8 /* CodeItem.swift */,
 			);
-			path = IItem;
+			path = Item;
+			sourceTree = "<group>";
+		};
+		D555B9F92B68A8C9009314A8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D555B9FA2B68A8E4009314A8 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		D56798C62B61759200955842 /* Contents */ = {
@@ -203,6 +213,7 @@
 		D5EB29182B6174CC0085653F /* SwiftCaterpie */ = {
 			isa = PBXGroup;
 			children = (
+				D555B9F92B68A8C9009314A8 /* Extensions */,
 				D50DABB62B65A45F00E140B9 /* Enums */,
 				D50DABB32B65A3C800E140B9 /* Tools */,
 				D56798CB2B617ADC00955842 /* Styles */,
@@ -302,11 +313,12 @@
 				D50DABBF2B65B06100E140B9 /* SettingsViewModel.swift in Sources */,
 				D56798E12B61C1CF00955842 /* FileItem.swift in Sources */,
 				D56798D12B617F3700955842 /* MainScreenViewModel.swift in Sources */,
-				D50DABB52B65A3F300E140B9 /* ColorManager.swift in Sources */,
 				D56798CF2B617EA900955842 /* MainScreenView.swift in Sources */,
 				D56798E32B61DF3600955842 /* DroppedItem.swift in Sources */,
 				D5EB291A2B6174CC0085653F /* SwiftCaterpieApp.swift in Sources */,
+				D555B9F42B681FA7009314A8 /* CodeItem.swift in Sources */,
 				D50DABBA2B65A9E200E140B9 /* CodeAnalyzerViewModel.swift in Sources */,
+				D555B9FB2B68A8E4009314A8 /* Extensions.swift in Sources */,
 				D50DABBD2B65AAA700E140B9 /* CodeSnippet.swift in Sources */,
 				D56798DC2B61BA7800955842 /* FileExplorer.swift in Sources */,
 				D50DABAF2B651A0900E140B9 /* FileRegisterItem.swift in Sources */,

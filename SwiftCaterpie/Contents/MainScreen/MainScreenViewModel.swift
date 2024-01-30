@@ -25,8 +25,11 @@ class MainScreenViewModel: ObservableObject{
             }.first!.code
         } else {
             do{
-                let code = try String(contentsOf: selectedFile)
+                var code = try String(contentsOf: selectedFile)
+                code = code.replacingOccurrences(of: "/*@START_MENU_TOKEN@*/", with: "")
+                code = code.replacingOccurrences(of: "/*@END_MENU_TOKEN@*/", with: "")
                 return code
+                
             }catch{
                 print("something went wrong while loading code")
                 return "Could not load this file"

@@ -21,6 +21,24 @@ Swift Caterpie is a Swift development tool in progress. Once completed, it aims 
     </p>
     <img src="SwiftCaterpie/Assets.xcassets/readmeImages/24-01-all-components.imageset/24-01-all-components.png" alt=""/>
   </details>
+
+  <details>
+    <summary>4.Day</summary>
+    <div>
+      Now it starts to work like it should and colorizes the code.
+    </p>
+    <img src="SwiftCaterpie/Assets.xcassets/readmeImages/29-01-screenshot.imageset/29-01-screenshot.png" alt=""/>
+    </div>
+    To get this working I had added some extensions to Color and NSColor and did it another way than I had on mind before.
+    </p>
+    Now it recognizes some cases more and highlights them. I will improve the logic so I can get some more cases of Code type
+    </p
+      <div>
+    <img src="SwiftCaterpie/Assets.xcassets/readmeImages/29-01-excample.imageset/Image.png" alt=""/>
+      </div>
+  </details>
+
+  
 </details>
 
 ---
